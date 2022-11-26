@@ -5,3 +5,7 @@ Digital and Circuit and Logic Subject
 ![output](image/Snipaste_2022-11-26_08-11-36.png)
 
 ![](image/Automatic%20Room%20Lighting%20System-%20Nov%2026.png)
+
+### TinkCad URL
+
+[https://www.tinkercad.com/things/cSiiL6Sid4z ](https://www.tinkercad.com/things/cSiiL6Sid4z)
