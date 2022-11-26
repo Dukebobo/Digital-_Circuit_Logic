@@ -1,5 +1,16 @@
 // C++ code
-//
+/*
+Language: C++ 
+Project: DLC_Q1_Finals
+Description: Create an "Automatic Room Lightning System" with code
+Instructor: Ms.Tan
+ThinkCard URL:https://www.tinkercad.com/things/cSiiL6Sid4z 
+Submit Date: 7:59AM,Nov.26,2022
+Refrence: https://www.youtube.com/watch?v=iHOWohC6Ecs
+
+Modify By Duke
+
+*/
 //define variables.
 float pir,pts;
 
