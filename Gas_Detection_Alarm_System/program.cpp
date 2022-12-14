@@ -5,72 +5,65 @@ Project: Gas Detection Alarm System
 
 #include<LiquidCrystal.h>
 
-LiquidCrystal lcd(13,12,8,9,10,11);//define Lcd pins RS,E,D4-D7
+LiquidCrystal lcd(13, 12, 8, 9, 10, 11); //define Lcd pins RS,E,D4-D7
 
-int sensor = A0;  //define sensor pin 
-int analogValue = 0;//  set analog value 0 
-int redled = 4;  //define led,speaker,fan pin
-int greenled = 5; 
-int speaker = 3; 
+int sensor = A0; //define sensor pin 
+int analogValue = 0; //  set analog value 0 
+int redled = 4; //define led,speaker,fan pin
+int greenled = 5;
+int speaker = 3;
 int fan = 2;
 
-
-void setup()
-{
+void setup() {
   //set sensor INPUT
-  pinMode(sensor,INPUT); 
-  
+  pinMode(sensor, INPUT);
+
   //set led,fan,speaker OUTPUT
-  pinMode(redled,OUTPUT);
-  pinMode(greenled,OUTPUT);
-  pinMode(speaker,OUTPUT);
-  pinMode(fan,OUTPUT);
+  pinMode(redled, OUTPUT);
+  pinMode(greenled, OUTPUT);
+  pinMode(speaker, OUTPUT);
+  pinMode(fan, OUTPUT);
   Serial.begin(9600); //serial port  for debug
-  lcd.begin(16,2); //set lcd
-  
-  
+  lcd.begin(16, 2); //set lcd
+
 }
 
-void loop()
-{
+void loop() {
 
-  
   analogValue = analogRead(0); //read analog value 
-  Serial.println(analogValue);  //display analog value 
-  
-  if(analogValue > 400) //if the sensor detects gas and value > 400
-  {
-  	digitalWrite(redled,HIGH);  //redled turn on
-    digitalWrite(greenled,LOW); //greenled off
-    digitalWrite(fan,HIGH);		//fan turn off
-    tone(speaker,1000,1000);    //speaker turn on
-    lcd.clear();
-  	lcd.setCursor(0,0);    //first row
-  	lcd.print("=ALERT-EVACUATE=");  //dispaly on lcd information and sensor value
-  	lcd.setCursor(0,1);  // second row
-  	lcd.print(analogValue);
-    delay(500); 
+  Serial.println(analogValue); //display analog value 
 
-  }
-  else //else sensor value <400
+  if (analogValue > 400) //if the sensor detects gas and value > 400
   {
-  
-  	digitalWrite(redled,LOW); //redled turn off
-    digitalWrite(greenled,HIGH); //greenled turn on
-    digitalWrite(fan,LOW); //fan turn off
+    digitalWrite(redled, HIGH); //redled turn on
+    digitalWrite(greenled, LOW); //greenled off
+    digitalWrite(fan, HIGH); //fan turn off
+    tone(speaker, 1000, 1000); //speaker turn on
     lcd.clear();
-  	lcd.setCursor(0,0);
-  	lcd.print("=SAFE=");   //display on lcd information and sensor value
-  	lcd.setCursor(0,1);
-  	lcd.print(analogValue);
+    lcd.setCursor(0, 0); //first row
+    lcd.print("=ALERT-EVACUATE="); //dispaly on lcd information and sensor value
+    lcd.setCursor(0, 1); // second row
+    lcd.print(analogValue);
     delay(500);
-  	lcd.clear();
-  	lcd.setCursor(0,0);
-  	lcd.print("Sensor now is:");
-  	lcd.setCursor(0,1);
-  	lcd.print(analogValue);
+
+  } else //else sensor value <400
+  {
+
+    digitalWrite(redled, LOW); //redled turn off
+    digitalWrite(greenled, HIGH); //greenled turn on
+    digitalWrite(fan, LOW); //fan turn off
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("=SAFE="); //display on lcd information and sensor value
+    lcd.setCursor(0, 1);
+    lcd.print(analogValue);
+    delay(500);
+    lcd.clear();
+    lcd.setCursor(0, 0);
+    lcd.print("Sensor now is:");
+    lcd.setCursor(0, 1);
+    lcd.print(analogValue);
     delay(500);
   }
 
-  
 }
