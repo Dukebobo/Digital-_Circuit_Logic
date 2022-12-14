@@ -17,7 +17,10 @@ int fan = 2;
 
 void setup()
 {
-  pinMode(sensor,INPUT); //set sensor,led,fan,speaker output
+  //set sensor INPUT
+  pinMode(sensor,INPUT); 
+  
+  //set led,fan,speaker OUTPUT
   pinMode(redled,OUTPUT);
   pinMode(greenled,OUTPUT);
   pinMode(speaker,OUTPUT);
